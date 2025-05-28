@@ -17,6 +17,7 @@ import javax.swing.Timer;
 public class Runner extends JPanel implements ActionListener, MouseListener{
 	Hamster h = new Hamster();
 	Background b = new Background();
+	EagHealth t = new EagHealth();
 
 	public void paint(Graphics g) {
 		
@@ -25,6 +26,7 @@ public class Runner extends JPanel implements ActionListener, MouseListener{
 		h.init(25.0, 25.0);
 		h.paint(g);
         
+		t.paint(g);
 		
         
         
