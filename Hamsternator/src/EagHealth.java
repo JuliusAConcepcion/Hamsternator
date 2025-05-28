@@ -15,6 +15,7 @@ public class EagHealth extends Sprite{
 		this.y = 0;
 		
 		update();
+		
 	}
 	
 	
