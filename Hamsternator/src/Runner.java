@@ -28,7 +28,7 @@ public class Runner extends JPanel implements ActionListener, MouseListener{
         
 		t.paint(g);
 		
-        
+        System.out.println("monkeyBalls");
         
 		
 	
