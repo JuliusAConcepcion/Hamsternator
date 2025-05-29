@@ -35,7 +35,10 @@ public class Sprite {
 	
 	public void init(double a, double b) {
 		tx.setToTranslation(a, b);
-		tx.scale(.5, .5);
+	}
+	
+	public void setScale(double a, double b) {
+		tx.scale(a, b);
 	}
 
 	private Image getImage(String path) {

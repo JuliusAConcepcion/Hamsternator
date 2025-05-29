@@ -13,8 +13,8 @@ public class Background{
 	int width, height;
 	int x, y;						//position of the object
 	int vx, vy;						//movement variables
-	double scaleWidth = 4.0;		//change to scale image
-	double scaleHeight = 4.0; 		//change to scale image
+	double scaleWidth = 5.0;		//change to scale image
+	double scaleHeight = 5.0; 		//change to scale image
 
 	public Background() {
 		forward = getImage("/pictures/"+"hamsternator-bg-pixilart.png"); //load the image for Tree

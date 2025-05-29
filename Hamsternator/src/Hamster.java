@@ -7,7 +7,7 @@ import java.awt.event.MouseListener;
 import java.awt.geom.AffineTransform;
 import java.net.URL;
 
-public class Hamster extends Character{
+public class Hamster extends Sprite{
 	
 	public Hamster() {
 		
