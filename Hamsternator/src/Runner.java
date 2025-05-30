@@ -23,7 +23,10 @@ public class Runner extends JPanel implements ActionListener, MouseListener{
 	public void paint(Graphics g) {
 		
 		super.paintComponent(g);
+		b.init(0,0);
 		b.paint(g);
+		
+		
 		h.init(25.0, 25.0);
 		h.paint(g);
         
@@ -46,7 +49,7 @@ public class Runner extends JPanel implements ActionListener, MouseListener{
 	public Runner() {
 		JFrame f = new JFrame("Method Use");
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		f.setSize(1000,650);
+		f.setSize(2000,1000);
 		
 		animationTimer = new Timer(16, this);
 		f.add(this);

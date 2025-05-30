@@ -13,8 +13,8 @@ public class Background{
 	int width, height;
 	int x, y;						//position of the object
 	int vx, vy;						//movement variables
-	double scaleWidth = 5.0;		//change to scale image
-	double scaleHeight = 5.0; 		//change to scale image
+	double scaleWidth = 10.0;		//change to scale image
+	double scaleHeight = 10.0; 		//change to scale image
 
 	public Background() {
 		forward = getImage("/pictures/"+"New Sky.png"); //load the image for Tree
@@ -75,10 +75,11 @@ public class Background{
 
 	}
 	
-	private void init(double a, double b) {
+	public void init(double a, double b) {
 		tx.setToTranslation(a, b);
 		tx.scale(scaleWidth, scaleHeight);
 	}
+	
 
 	private Image getImage(String path) {
 		Image tempImage = null;
