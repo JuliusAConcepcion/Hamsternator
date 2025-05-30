@@ -17,7 +17,7 @@ public class Background{
 	double scaleHeight = 5.0; 		//change to scale image
 
 	public Background() {
-		forward = getImage("/pictures/"+"hamsternator-bg-pixilart.png"); //load the image for Tree
+		forward = getImage("/pictures/"+"New Sky.png"); //load the image for Tree
 		
 
 		//alter these
