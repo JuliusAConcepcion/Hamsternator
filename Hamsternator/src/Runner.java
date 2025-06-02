@@ -26,12 +26,11 @@ public class Runner extends JPanel implements ActionListener, MouseListener{
 		b.init(0,0);
 		b.paint(g);
 		
-		
-		h.init(25.0, 25.0);
 		h.paint(g);
         
 		e.paint(g);
 		c.paint(g);
+		c.update();
 		r.paint(g);
        
         
@@ -50,6 +49,7 @@ public class Runner extends JPanel implements ActionListener, MouseListener{
 		JFrame f = new JFrame("Method Use");
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		f.setSize(2000,1000);
+		
 		
 		animationTimer = new Timer(16, this);
 		f.add(this);
@@ -92,7 +92,8 @@ public class Runner extends JPanel implements ActionListener, MouseListener{
 
 	public void keyPressed(KeyEvent arg0) {
 		// TODO Auto-generated method stub
-		System.out.println(arg0.getKeyCode());
+		
+		System.out.println(arg0.getKeyCode()+" asdf");
 	}
 
 	public void keyReleased(KeyEvent arg0) {

@@ -11,6 +11,7 @@ public class Cloud extends Sprite{
 	
 	private int x;
 	private int y;
+	private int vx = 10;
 	
 	public Cloud() {
 		super("pictures/Cloud1.png");
@@ -29,5 +30,12 @@ public class Cloud extends Sprite{
 		this.changePicture("pictures/cloud3.png");
 
 	}
+	
+	public void update() {
+		x =+ vx;
+		init(x,y);
+	}
+	
+	
 	
 }
