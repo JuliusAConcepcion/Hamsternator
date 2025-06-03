@@ -21,6 +21,20 @@ public class EagHealth extends Sprite{
 		
 	}
 	
+public EagHealth(int a, int b) {
+		
+		
+		super("/pictures/"+"Eagle health " + health + ".png");
+		
+		this.x = a;
+		this.y = b;
+		tx = AffineTransform.getTranslateInstance(0, 0);
+		init(x,y);
+		setScale(0.8,0.8);
+		update();
+		
+	}
+	
 	
 	public void eagDmg(){
 		health--;

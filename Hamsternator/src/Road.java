@@ -12,8 +12,15 @@ public class Road extends Sprite{
 		this.x = 0;
 		this.y = 0;
 		
+	}
+	
+	public Road(int a, int b) {
 		
+		super("/pictures/"+"Road.gif");
 		
+		x=a;
+		y=b;
+		init(x,y);
 	}
 	
 	

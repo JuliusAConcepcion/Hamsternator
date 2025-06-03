@@ -13,35 +13,35 @@ public class Sprite {
 	private AffineTransform tx;
 
 	public Sprite(String fuckall) {
-		img = getImage(fuckall); //load the image for Tree
+		setImg(getImage(fuckall)); //load the image for Tree
 		
 
-		tx = AffineTransform.getTranslateInstance(0, 0);
+		setTx(AffineTransform.getTranslateInstance(0, 0));
 		init(0, 0); 				//initialize the location of the image
 									//use your variables
 	}
 	
 	public void changePicture(String newFileName) {
-		img = getImage(newFileName);
+		setImg(getImage(newFileName));
 		init(0, 0);
 	}
 	
 	public void paint(Graphics g) {
 		//these are the 2 lines of code needed draw an image on the screen
 		Graphics2D g2 = (Graphics2D) g;
-		g2.drawImage(img, tx, null);
+		g2.drawImage(getImg(), getTx(), null);
 
 	}
 	
 	public void init(double a, double b) {
-		tx.setToTranslation(a, b);
+		getTx().setToTranslation(a, b);
 	}
 	
 	public void setScale(double a, double b) {
-		tx.scale(a, b);
+		getTx().scale(a, b);
 	}
 
-	private Image getImage(String path) {
+	public Image getImage(String path) {
 		Image tempImage = null;
 		try {
 			URL imageURL = Sprite.class.getResource(path);
@@ -50,6 +50,22 @@ public class Sprite {
 			e.printStackTrace();
 		}
 		return tempImage;
+	}
+
+	public Image getImg() {
+		return img;
+	}
+
+	public void setImg(Image img) {
+		this.img = img;
+	}
+
+	public AffineTransform getTx() {
+		return tx;
+	}
+
+	public void setTx(AffineTransform tx) {
+		this.tx = tx;
 	}
 	
 	
