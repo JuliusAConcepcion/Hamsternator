@@ -49,7 +49,7 @@ public class Runner extends JPanel implements ActionListener, MouseListener{
 		h.paint(g);
 		
 		
-		
+//		System.out.println("End of paint");
 	}
 
 

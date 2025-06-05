@@ -1,4 +1,5 @@
 import java.awt.Graphics;
+import java.awt.image.ImageObserver;
 
 public class PowerUp extends Sprite{
 	
@@ -7,61 +8,65 @@ public class PowerUp extends Sprite{
 	private String ammo = "pictures/ss-shell-pixilart.png";
 	private int type;
 	
-	private int vx = -10;
+	private double vx = -10;
 	
 	public PowerUp(int a) {
 		super("");
 		
+		setType(a); 
+		
 		if (a <= 1) {
 			this.changePicture(health);
-			setType(1);
 		} else if(a == 2) {
 			this.changePicture(shield);
-			setType(2);
 		} else {
 			this.changePicture(ammo);
-			setType(3);
 		}
 		
-		this.setScaleX(20);
-		this.setScaleX(20);
+		this.setScaleX(2);
+		this.setScaleY(2);
 		this.setX(500);
-		this.setY(100);
+		this.setY(500);
 	}
 	
 	public void setRandomPower() {
-		int temp = (int)(Math.random()*2) + 1;
+		int temp = (int)(Math.random()*3) + 1;
 		
-		if (temp == 1) {
+		setType(temp);
+		
+		if (temp <= 1) {
 			this.changePicture(health);
-			setType(1);
 		} else if(temp == 2) {
 			this.changePicture(shield);
 			setType(2);
 		} else {
 			this.changePicture(ammo);
-			setType(3);
 		}
 	}
 	
-	public boolean isColliding(Hamster a) {//change later
+	public boolean isColliding(Hamster a) {//code later
 		
 		return false;
 	}
 	
 	public void paint(Graphics g) {
-		this.setX(getX()+vx);
+		
+		this.setX(getX() + vx);
 		
 		if (this.getX() < -50) {
 			reset();
 		}
 		
 		super.paint(g);
+		
+		System.out.println("type: " +getType());
+		System.out.println(getX());
 	}
 
 	private void reset() {
 		this.setRandomPower();
-		this.setX(2000 + 200);
+		this.setX(2100);
+		this.setY((int)(Math.random()*1950 - 1500 + 1) + 1500);
 	}
 
 	public int getType() {

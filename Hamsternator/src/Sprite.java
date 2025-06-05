@@ -19,6 +19,8 @@ public class Sprite {
 	public double getScaleX() {
 		return scaleX;
 	}
+	
+	
 
 	public void setScaleX(double scaleX) {
 		this.scaleX = scaleX;
