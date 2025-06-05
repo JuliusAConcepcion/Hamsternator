@@ -8,23 +8,25 @@ import java.awt.geom.AffineTransform;
 import java.net.URL;
 
 public class Cloud extends Sprite{
-	
-	private double x;
-	private double y;
+
 	private double vx = (double)(Math.random()*0.6) + 0.1;
-	private int cloudSize = (int)(Math.random()*3)+3;
 	
 	public Cloud() {
 		super("pictures/Cloud1.png");
-		x = 0;
-		y = 0;
-		
+		this.setX(0);
+		this.setY(0);
+		int temp = (int)(Math.random()*5)+2;
+		setScaleX(temp);
+		setScaleY(temp);
 	}
 	
 	public Cloud(int a, int b) {
 		super("pictures/Cloud1.png");
-		x = a;
-		y = b;
+		this.setX(a);
+		this.setY(b);
+		int temp = (int)(Math.random()*2)+5;
+		setScaleX(temp);
+		setScaleY(temp);
 		
 	}
 	
@@ -44,32 +46,16 @@ public class Cloud extends Sprite{
 	}
 	
 	public void paint(Graphics g) {
-		x+=vx;
+		setX(getX()+vx);
 		
-		if (x > 2000) {
-			x = (int)(Math.random()*-50) - 10;
+		if (getX() > 2000) {
+			setX((int)(Math.random()*-50) - 10);
 		}
 		
-		init(x, y);
-		setScale(cloudSize, cloudSize);
 		super.paint(g);
 	}
 
-	public double getX() {
-		return x;
-	}
-
-	public void setX(double x) {
-		this.x = x;
-	}
-
-	public double getY() {
-		return y;
-	}
-
-	public void setY(double y) {
-		this.y = y;
-	}
+	
 
 	public double getVx() {
 		return vx;

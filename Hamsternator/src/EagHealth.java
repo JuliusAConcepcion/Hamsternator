@@ -4,33 +4,29 @@ public class EagHealth extends Sprite{
 	
 	private AffineTransform tx;
 	static int health = 9;
-	int x;
-	int y; 
 	
 	public EagHealth() {
 		
 		
 		super("/pictures/"+"Eagle health " + health + ".png");
 		
-		this.x = 0;
-		this.y = -500;
-		tx = AffineTransform.getTranslateInstance(0, 0);
-		init(x,y);
-		setScale(0.8,0.8);
+		this.setX(0);
+		this.setY(0);
+		this.setScaleX(1.6);
+		this.setScaleY(1.6);
 		update();
 		
 	}
 	
-public EagHealth(int a, int b) {
+	public EagHealth(int a, int b) {
 		
 		
 		super("/pictures/"+"Eagle health " + health + ".png");
 		
-		this.x = a;
-		this.y = b;
-		tx = AffineTransform.getTranslateInstance(0, 0);
-		init(x,y);
-		setScale(0.8,0.8);
+		this.setX(a);
+		this.setY(b);
+		this.setScaleX(1.6);
+		this.setScaleY(1.6);
 		update();
 		
 	}
@@ -42,7 +38,6 @@ public EagHealth(int a, int b) {
 	}
 	
 	public void update() {
-		init(x, y);
 		changePicture("/pictures/"+"Eagle health " + health + ".png");
 	}
 

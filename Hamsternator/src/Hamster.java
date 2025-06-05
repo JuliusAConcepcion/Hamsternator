@@ -12,7 +12,19 @@ public class Hamster extends Sprite{
 	public Hamster() {
 		
 		super("/pictures/HamsterMotorcyle (7).gif");
-		this.setScale(2, 2);
+		this.setScaleX(2);
+		this.setScaleY(2);
+		setX(0);
+		setY(0);
+	}
+	
+	public Hamster(int a, int b) {
+		
+		super("/pictures/HamsterMotorcyle (7).gif");
+		this.setScaleX(2);
+		this.setScaleY(2);
+		setX(a);
+		setY(b);
 	}
 	
 	

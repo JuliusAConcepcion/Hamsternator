@@ -1,16 +1,16 @@
 
 public class Road extends Sprite{
 	
-	int x;
-	int y; 
 	
 	public Road() {
 		
 		
 		super("/pictures/"+"Road.gif");
 		
-		this.x = 0;
-		this.y = 0;
+		setX(0);
+		setY(0);
+		setScaleX(10);
+		setScaleY(7);
 		
 	}
 	
@@ -18,9 +18,11 @@ public class Road extends Sprite{
 		
 		super("/pictures/"+"Road.gif");
 		
-		x=a;
-		y=b;
-		init(x,y);
+		setX(a);
+		setY(b);
+		setScaleX(10);
+		setScaleY(7);
+		
 	}
 	
 	
