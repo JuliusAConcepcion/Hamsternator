@@ -7,25 +7,26 @@ import java.awt.event.MouseListener;
 import java.awt.geom.AffineTransform;
 import java.net.URL;
 
-public class Hamster extends Sprite{
+public class Eagle extends Sprite{
 	
-	public Hamster() {
+	public Eagle() {
 		
-		super("/pictures/Hamsternator.gif");
-		this.setScaleX(2);
-		this.setScaleY(2);
+		super("/pictures/eagleNew.gif");
+		this.setScaleX(1);
+		this.setScaleY(1);
 		setX(0);
 		setY(0);
 	}
 	
-	public Hamster(int a, int b) {
+	public Eagle(int a, int b) {
 		
-		super("/pictures/Hamsternator.gif");
-		this.setScaleX(2);
-		this.setScaleY(2);
+		super("/pictures/eagleNew.gif");
+		this.setScaleX(.15);
+		this.setScaleY(.15);
 		setX(a);
 		setY(b);
 	}
+
 	
 	
 	

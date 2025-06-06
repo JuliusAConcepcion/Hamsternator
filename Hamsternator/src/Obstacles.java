@@ -1,26 +1,26 @@
 import java.awt.Graphics;
 import java.awt.image.ImageObserver;
 
-public class PowerUp extends Sprite{
+public class Obstacles extends Sprite{
 	
-	private String health = "pictures/health-pu-pixilart.png";
-	private String shield = "pictures/shield-pu-pixilart.png";
-	private String ammo = "pictures/ss-shell-pixilart.png";
+	private String CarP = "pictures/CarP.gif";
+	private String CarB = "pictures/CarB.gif";
+	private String Truck = "pictures/CandE.gif";
 	private int type;
 	
 	private double vx = -10;
 	
-	public PowerUp(int a) {
+	public Obstacles(int a) {
 		super("");
 		
 		setType(a); 
 		
 		if (a <= 1) {
-			this.changePicture(health);
+			this.changePicture(CarP);
 		} else if(a == 2) {
-			this.changePicture(shield);
+			this.changePicture(CarB);
 		} else {
-			this.changePicture(ammo);
+			this.changePicture(Truck);
 		}
 		
 		this.setScaleX(2);
@@ -29,17 +29,17 @@ public class PowerUp extends Sprite{
 		this.setY(500);
 	}
 	
-	public PowerUp(int a, int x, int y) {
+	public Obstacles(int a, int x, int y) {
 		super("");
 		
 		setType(a); 
 		
 		if (a <= 1) {
-			this.changePicture(health);
+			this.changePicture(CarP);
 		} else if(a == 2) {
-			this.changePicture(shield);
+			this.changePicture(CarB);
 		} else {
-			this.changePicture(ammo);
+			this.changePicture(Truck);
 		}
 		
 		this.setScaleX(2);
@@ -54,12 +54,12 @@ public class PowerUp extends Sprite{
 		setType(temp);
 		
 		if (temp <= 1) {
-			this.changePicture(health);
+			this.changePicture(CarP);
 		} else if(temp == 2) {
-			this.changePicture(shield);
+			this.changePicture(CarB);
 			setType(2);
 		} else {
-			this.changePicture(ammo);
+			this.changePicture(Truck);
 		}
 	}
 	

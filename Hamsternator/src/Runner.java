@@ -15,16 +15,17 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.Timer;
-public class Runner extends JPanel implements ActionListener, MouseListener{
+public class Runner extends JPanel implements ActionListener, MouseListener, KeyListener {
 	Hamster h = new Hamster(0, 500);
 	Background b = new Background();
 	EagHealth e = new EagHealth(160, -600);
 	ArrayList<Cloud> c = new ArrayList<Cloud>();
 	ArrayList<Building> buildings = new ArrayList<Building>();
 	Road r = new Road(0,800);
-	Road r2 = new Road(0,700);
-	PowerUp powerUp = new PowerUp(1); 
+	Road r2 = new Road(0,700); 
 	Eagle E = new Eagle(10,400);
+	PowerUp powerUp = new PowerUp(1, 2010, 900); 
+	Obstacles cars = new Obstacles(1, 2010, 900); 
 	
 	public void paint(Graphics g) {
 		
@@ -46,9 +47,14 @@ public class Runner extends JPanel implements ActionListener, MouseListener{
 		r2.paint(g);
 		
 		powerUp.paint(g);
+		cars.paint(g);
 		E.paint(g);
 
 		h.paint(g);
+		
+		if (powerUp.isColliding(h)) {
+			System.out.println("hiiting ham");
+		}
 		
 		
 //		System.out.println("End of paint");
@@ -85,6 +91,15 @@ public class Runner extends JPanel implements ActionListener, MouseListener{
 		f.addMouseListener(this);
 		animationTimer.start();
 		f.setVisible(true);
+		
+	    this.setFocusable(true);          // make sure Runner JPanel can get focus
+	    this.requestFocusInWindow();      // request focus so it actually receives key events
+	    this.addKeyListener(this);        // register Runner as its own KeyListener
+
+	    f.addMouseListener(this);
+	    animationTimer.start();
+	    f.setVisible(true);
+
 		
 	}
 	public void mouseClicked(MouseEvent arg0) {
@@ -131,6 +146,6 @@ public class Runner extends JPanel implements ActionListener, MouseListener{
 
 	public void keyTyped(KeyEvent arg0) {
 		// TODO Auto-generated method stub
-		System.out.println(arg0.getKeyCode());
+		
 	}
 }
