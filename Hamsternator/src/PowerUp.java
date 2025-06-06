@@ -29,6 +29,25 @@ public class PowerUp extends Sprite{
 		this.setY(500);
 	}
 	
+	public PowerUp(int a, int x, int y) {
+		super("");
+		
+		setType(a); 
+		
+		if (a <= 1) {
+			this.changePicture(health);
+		} else if(a == 2) {
+			this.changePicture(shield);
+		} else {
+			this.changePicture(ammo);
+		}
+		
+		this.setScaleX(2);
+		this.setScaleY(2);
+		this.setX(x);
+		this.setY(y);
+	}
+	
 	public void setRandomPower() {
 		int temp = (int)(Math.random()*3) + 1;
 		
@@ -45,8 +64,20 @@ public class PowerUp extends Sprite{
 	}
 	
 	public boolean isColliding(Hamster a) {//code later
-		
-		return false;
+		int px = (int) this.getX();
+	    int py = (int) this.getY();
+	    int pw = (int)(this.getWidth() * this.getScaleX());
+	    int ph = (int)(this.getHeight() * this.getScaleY());
+
+	    int hx = (int) a.getX();
+	    int hy = (int) a.getY();
+	    int hw = (int)(a.getWidth() * a.getScaleX());
+	    int hh = (int)(a.getHeight() * a.getScaleY());
+
+	    return (px < hx + hw &&
+	            px + pw > hx &&
+	            py < hy + hh &&
+	            py + ph > hy);
 	}
 	
 	public void paint(Graphics g) {
@@ -59,14 +90,15 @@ public class PowerUp extends Sprite{
 		
 		super.paint(g);
 		
-		System.out.println("type: " +getType());
-		System.out.println(getX());
+//		System.out.println("type: " +getType());
+//		System.out.println(getX() + " " + getY());
+//		System.out.println(this.getWidth()*2);
 	}
 
 	private void reset() {
 		this.setRandomPower();
 		this.setX(2100);
-		this.setY((int)(Math.random()*1950 - 1500 + 1) + 1500);
+		this.setY((int)(Math.random() * (900 - 730 + 1)) + 730);
 	}
 
 	public int getType() {

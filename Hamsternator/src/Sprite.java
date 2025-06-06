@@ -5,6 +5,7 @@ import java.awt.Toolkit;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.geom.AffineTransform;
+import java.awt.image.ImageObserver;
 import java.net.URL;
 
 public class Sprite {
@@ -111,6 +112,14 @@ public class Sprite {
 
 	public void setTx(AffineTransform tx) {
 		this.tx = tx;
+	}
+	
+	public int getWidth() {
+	    return img.getWidth(null);
+	}
+
+	public int getHeight() {
+	    return img.getHeight(null);
 	}
 	
 	
