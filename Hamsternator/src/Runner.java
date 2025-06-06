@@ -22,7 +22,9 @@ public class Runner extends JPanel implements ActionListener, MouseListener, Key
 	ArrayList<Cloud> c = new ArrayList<Cloud>();
 	ArrayList<Building> buildings = new ArrayList<Building>();
 	ArrayList<Road> r = new ArrayList<Road>();
+	Eagle E = new Eagle(10,400);
 	PowerUp powerUp = new PowerUp(1, 2010, 900); 
+	Obstacles cars = new Obstacles(1, 2010, 900); 
 	
 	public void paint(Graphics g) {
 		
@@ -45,7 +47,9 @@ public class Runner extends JPanel implements ActionListener, MouseListener, Key
 		}
 		
 		powerUp.paint(g);
-		
+		cars.paint(g);
+		E.paint(g);
+
 		h.paint(g);
 		
 		if (powerUp.isColliding(h)) {

@@ -1,5 +1,14 @@
-/sounds/
+/Background.class
 /Building.class
-/pictures/
+/Character.class
+/Cloud.class
+/EagHealth.class
+/Hamster.class
 /PowerUp.class
-/PowerUp2.class
+/Road.class
+/Runner.class
+/Sprite.class
+/pictures/
+/sounds/
+/Eagle.class
+/Obstacles.class
