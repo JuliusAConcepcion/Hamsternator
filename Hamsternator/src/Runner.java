@@ -24,6 +24,7 @@ public class Runner extends JPanel implements ActionListener, MouseListener{
 	Road r = new Road(0,800);
 	Road r2 = new Road(0,700);
 	PowerUp powerUp = new PowerUp(1); 
+	Eagle E = new Eagle(10,400);
 	
 	public void paint(Graphics g) {
 		
@@ -45,7 +46,8 @@ public class Runner extends JPanel implements ActionListener, MouseListener{
 		r2.paint(g);
 		
 		powerUp.paint(g);
-		
+		E.paint(g);
+
 		h.paint(g);
 		
 		
