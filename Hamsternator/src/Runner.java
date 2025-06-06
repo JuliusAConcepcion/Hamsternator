@@ -179,7 +179,7 @@ public class Runner extends JPanel implements ActionListener, MouseListener, Key
 
         // Keep inside bounds (example 0 to 2000 width, 0 to 1000 height)
         newX = Math.max(0, Math.min(newX, 2000-h.getWidth()));
-        newY = Math.min(newY, 950);
+        newY = Math.max(650, Math.min(newY, 950));
         
 
         h.setX(newX);
