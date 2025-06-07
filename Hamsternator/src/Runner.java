@@ -27,6 +27,7 @@ public class Runner extends JPanel implements ActionListener, MouseListener, Key
 	ArrayList<Building> buildings = new ArrayList<Building>();
 	ArrayList<Road> r = new ArrayList<Road>();
 	Eagle E = new Eagle(10,400);
+	
 	PowerUp powerUp = new PowerUp(1, 2010, 900); 
 	Obstacles cars = new Obstacles(1, 2010, 900); 
 	Title t = new Title();
@@ -42,6 +43,7 @@ public class Runner extends JPanel implements ActionListener, MouseListener, Key
 	
 	public void paint(Graphics g) {
 		super.paint(g);
+		//startscreen graphics
 		if (!gameStarted) {
 			b.paint(g);
 				
@@ -61,6 +63,7 @@ public class Runner extends JPanel implements ActionListener, MouseListener, Key
 		//add happy music here, StartMenuMusic
 			return;
 	    }
+		//gameover graphics
 	    if(gameOver){
 	    g.setColor(Color.black);
 	    g.fill3DRect(0, 0, 2000, 2000, gameOver);
@@ -69,7 +72,7 @@ public class Runner extends JPanel implements ActionListener, MouseListener, Key
 	       return;
 	    }	 
 	    
-		
+		//running game graphics
 		b.paint(g);
 		
 		for (Building asdf: buildings) {
@@ -178,6 +181,7 @@ public class Runner extends JPanel implements ActionListener, MouseListener, Key
 	
 	public void mouseReleased(MouseEvent arg0) {
 		// TODO Auto-generated method stub
+		//code for game phases, start - running - over
 		if (!gameStarted) {
 	        gameStarted = true;
 	        animationTimer.start();
@@ -185,7 +189,7 @@ public class Runner extends JPanel implements ActionListener, MouseListener, Key
 	        } 
 	 	else if (gameOver) {
 	        gameOver = false;
-	        
+	        //resets game
 	        h = new Hamster(200, 850);
 	    	hh = new HamHealth(10, 950);
 	    	E = new Eagle(10,400);
@@ -209,7 +213,7 @@ public class Runner extends JPanel implements ActionListener, MouseListener, Key
 //		System.out.println(arg0.getKeyCode());
 		
 		int key = arg0.getKeyCode();
-
+	
         int moveAmount = 50; // how much hamster moves per key press
 
         if (key == KeyEvent.VK_LEFT || key == KeyEvent.VK_A) {
@@ -245,10 +249,10 @@ public class Runner extends JPanel implements ActionListener, MouseListener, Key
         newX = Math.max(0, Math.min(newX, 2000-h.getWidth()));
         newY = Math.max(650, Math.min(newY, 950));
         
-
+        //ham movement
         h.setX(newX);
         h.setY(newY);
-        
+        //eagle follow ham
         E.setX(newX- 300);
         E.setY(newY - 300);
         

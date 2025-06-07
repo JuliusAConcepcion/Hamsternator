@@ -40,12 +40,15 @@ public class Obstacles extends Sprite{
 			this.changePicture(CarB);
 		} else {
 			this.changePicture(Truck);
+			this.setScaleX(1.5);
+			this.setScaleY(1.5);
 		}
 		
 		this.setScaleX(4);
 		this.setScaleY(4);
 		this.setX(x);
 		this.setY(y);
+		reset();
 	}
 	
 	public void setRandomCar() {
@@ -96,6 +99,7 @@ public class Obstacles extends Sprite{
 	}
 
 	private void reset() {
+		//makes the cars stay on lane
 		this.setRandomCar();
 		this.setX(2100);
 		int lane = ((int)(Math.random()*4)) + 1;

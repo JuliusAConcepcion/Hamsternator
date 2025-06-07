@@ -96,6 +96,7 @@ public class PowerUp extends Sprite{
 	}
 
 	private void reset() {
+		//makes the powerUps stay on lane
 		this.setRandomPower();
 		this.setX(2100);
 		int lane = ((int)(Math.random()*4)) + 1;
