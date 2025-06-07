@@ -42,8 +42,8 @@ public class PowerUp extends Sprite{
 			this.changePicture(ammo);
 		}
 		
-		this.setScaleX(2);
-		this.setScaleY(2);
+		this.setScaleX(3);
+		this.setScaleY(3);
 		this.setX(x);
 		this.setY(y);
 	}

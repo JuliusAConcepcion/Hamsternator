@@ -3,6 +3,7 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Toolkit;
 import java.awt.GridLayout;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -11,12 +12,15 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 public class Runner extends JPanel implements ActionListener, MouseListener, KeyListener {
 	Hamster h = new Hamster(200, 850);
+	Hamster hLocked = new Hamster(800, 850);
 	Background b = new Background();
 	EagHealth e = new EagHealth(160, -600);
 	ArrayList<Cloud> c = new ArrayList<Cloud>();
@@ -25,10 +29,46 @@ public class Runner extends JPanel implements ActionListener, MouseListener, Key
 	Eagle E = new Eagle(10,400);
 	PowerUp powerUp = new PowerUp(1, 2010, 900); 
 	Obstacles cars = new Obstacles(1, 2010, 900); 
+	Title t = new Title();
+	StartButton sb = new StartButton(700, 400);
+	EndScreen es = new EndScreen();
+	HamHealth hh = new HamHealth(10, 950);
+	
+	
+	boolean gameStarted = false;
+	boolean gameOver = false;
+    Timer animationTimer;
+
 	
 	public void paint(Graphics g) {
-		
-		super.paintComponent(g);
+		super.paint(g);
+		if (!gameStarted) {
+			b.paint(g);
+				
+		for (Building asdf: buildings) {
+			asdf.paint(g);
+		}
+					
+		for (Road asdf: r) {
+			asdf.paint(g);
+		}
+				
+		hLocked.paint(g);
+		//buttons
+		sb.paint(g);
+		//add button pressed
+		t.paint(g);
+		//add happy music here, StartMenuMusic
+			return;
+	    }
+	    if(gameOver){
+	    g.setColor(Color.black);
+	    g.fill3DRect(0, 0, 2000, 2000, gameOver);
+	    es.paint(g);
+	    //add end sounds here, eagle-scream.wav and hamsterDying
+	       return;
+	    }	 
+	    
 		
 		b.paint(g);
 		
@@ -49,11 +89,15 @@ public class Runner extends JPanel implements ActionListener, MouseListener, Key
 		powerUp.paint(g);
 		cars.paint(g);
 		E.paint(g);
-
 		h.paint(g);
-		
+		hh.paint(g);//overlay, should always be printed last
+
 		if (powerUp.isColliding(h)) {
 			System.out.println("hiiting ham");
+		}
+		if (cars.isColliding(h) ) {
+//			hh.hamDmg(); //doesnt change the bar, shows bunch of errors, ethat help
+			
 		}
 		
 		
@@ -64,12 +108,13 @@ public class Runner extends JPanel implements ActionListener, MouseListener, Key
 	public static void main(String[] arg) {
 		Runner m = new Runner();
 	}
-	Timer animationTimer;
+	
 	public Runner() {
 		
 		JFrame f = new JFrame("Method Use");
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		f.setSize(2000,1100);
+		
 		
 		for (int i = 0; i < 10; i++) {
 			
@@ -93,20 +138,21 @@ public class Runner extends JPanel implements ActionListener, MouseListener, Key
 		}
 		
 		
-		animationTimer = new Timer(16, this);
+		animationTimer = new Timer(32, this);
 		f.add(this);
 		f.addMouseListener(this);
 		animationTimer.start();
 		f.setVisible(true);
+		this.requestFocusInWindow();
 		this.setPreferredSize(new Dimension(2000, 1000));
 		
 	    this.setFocusable(true);          // make sure Runner JPanel can get focus
 	    this.requestFocusInWindow();      // request focus so it actually receives key events
 	    this.addKeyListener(this);        // register Runner as its own KeyListener
 
-
-		
+	
 	}
+	
 	public void mouseClicked(MouseEvent arg0) {
 		// TODO Auto-generated method stub
 		
@@ -125,18 +171,28 @@ public class Runner extends JPanel implements ActionListener, MouseListener, Key
 
 	public void mousePressed(MouseEvent arg0) {
 		// TODO Auto-generated method stub
-	
+		 sb.update();
 	}
 
 	
 	public void mouseReleased(MouseEvent arg0) {
 		// TODO Auto-generated method stub
-		
+		if (!gameStarted) {
+	        gameStarted = true;
+	        animationTimer.start();
+	        
+	        } 
+	 	else if (gameOver) {
+	        gameOver = false;
+	        h = new Hamster(200, 850);               
+	        animationTimer.restart();
+	    }
 	}
 
 	public void actionPerformed(ActionEvent arg0) {
 		// TODO Auto-generated method stub
-		repaint();
+		
+	    repaint();
 	}
 
 	public void keyPressed(KeyEvent arg0) {

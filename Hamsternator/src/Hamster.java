@@ -29,6 +29,7 @@ public class Hamster extends Sprite{
 		setY(b);
 	}
 	
+
 	
 	
 	

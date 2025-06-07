@@ -23,10 +23,10 @@ public class Obstacles extends Sprite{
 			this.changePicture(Truck);
 		}
 		
-		this.setScaleX(2);
-		this.setScaleY(2);
-		this.setX(500);
-		this.setY(500);
+		this.setScaleX(3);
+		this.setScaleY(3);
+		this.setX(300);
+		this.setY(300);
 	}
 	
 	public Obstacles(int a, int x, int y) {
@@ -42,13 +42,13 @@ public class Obstacles extends Sprite{
 			this.changePicture(Truck);
 		}
 		
-		this.setScaleX(2);
-		this.setScaleY(2);
+		this.setScaleX(4);
+		this.setScaleY(4);
 		this.setX(x);
 		this.setY(y);
 	}
 	
-	public void setRandomPower() {
+	public void setRandomCar() {
 		int temp = (int)(Math.random()*3) + 1;
 		
 		setType(temp);
@@ -96,9 +96,9 @@ public class Obstacles extends Sprite{
 	}
 
 	private void reset() {
-		this.setRandomPower();
+		this.setRandomCar();
 		this.setX(2100);
-		this.setY((int)(Math.random() * (900 - 730 + 1)) + 730);
+		this.setY((int)(Math.random() * (1000 - 500 + 1)) + 500);
 	}
 
 	public int getType() {
