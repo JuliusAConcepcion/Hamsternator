@@ -98,7 +98,19 @@ public class Obstacles extends Sprite{
 	private void reset() {
 		this.setRandomCar();
 		this.setX(2100);
-		this.setY((int)(Math.random() * (1000 - 500 + 1)) + 500);
+		int lane = ((int)(Math.random()*4)) + 1;
+		if (lane <= 1) {
+			this.setY(700);
+		} else if(lane == 2) {
+			this.setY(800);
+			setType(2);
+		}else if(lane == 3) {
+			this.setY(900);
+			setType(3);
+		}else {
+			this.setY(1000);
+		}
+		
 	}
 
 	public int getType() {

@@ -93,7 +93,7 @@ public class Runner extends JPanel implements ActionListener, MouseListener, Key
 		hh.paint(g);//overlay, should always be printed last
 
 		if (powerUp.isColliding(h)) {
-			System.out.println("hiiting ham");
+			
 		}
 		if (cars.isColliding(h) ) {
 //			hh.hamDmg(); //doesnt change the bar, shows bunch of errors, ethat help
@@ -184,7 +184,14 @@ public class Runner extends JPanel implements ActionListener, MouseListener, Key
 	        } 
 	 	else if (gameOver) {
 	        gameOver = false;
-	        h = new Hamster(200, 850);               
+	        
+	        h = new Hamster(200, 850);
+	    	hh = new HamHealth(10, 950);
+	    	E = new Eagle(10,400);
+	    	e = new EagHealth(160, -600);
+	        cars = new Obstacles(1, 2010, 900);
+	    	powerUp = new PowerUp(1, 2010, 900); 
+	        gameStarted = false;
 	        animationTimer.restart();
 	    }
 	}
@@ -198,7 +205,7 @@ public class Runner extends JPanel implements ActionListener, MouseListener, Key
 	public void keyPressed(KeyEvent arg0) {
 		// TODO Auto-generated method stub
 
-		System.out.println(arg0.getKeyCode());
+//		System.out.println(arg0.getKeyCode());
 		
 		int key = arg0.getKeyCode();
 
@@ -240,6 +247,9 @@ public class Runner extends JPanel implements ActionListener, MouseListener, Key
 
         h.setX(newX);
         h.setY(newY);
+        
+        E.setX(newX- 300);
+        E.setY(newY - 500);
         
         repaint();
 		
