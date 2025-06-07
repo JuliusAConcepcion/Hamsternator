@@ -93,7 +93,8 @@ public class Runner extends JPanel implements ActionListener, MouseListener, Key
 		hh.paint(g);//overlay, should always be printed last
 
 		if (powerUp.isColliding(h)) {
-			
+			PowerUp icon = new PowerUp(powerUp.getType(), 460, 970);
+			icon.paint(g);
 		}
 		if (cars.isColliding(h) ) {
 //			hh.hamDmg(); //doesnt change the bar, shows bunch of errors, ethat help
@@ -249,7 +250,7 @@ public class Runner extends JPanel implements ActionListener, MouseListener, Key
         h.setY(newY);
         
         E.setX(newX- 300);
-        E.setY(newY - 500);
+        E.setY(newY - 300);
         
         repaint();
 		
