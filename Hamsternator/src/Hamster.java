@@ -53,7 +53,7 @@ public class Hamster extends Sprite{
 			lane = 4;
 		}
 		
-		System.out.println(y);
+//		System.out.println(y);
 		
 		super.paint(g);
 	}

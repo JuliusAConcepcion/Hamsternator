@@ -119,6 +119,16 @@ public class Runner extends JPanel implements ActionListener, MouseListener, Key
 		
 //		System.out.println("End of paint");
 	}
+	
+	public void shoot() {
+		if (ammo == true) {
+			//play sound here for shotgun sound
+			ammo = false;
+			e.eagDmg();
+		} else {
+			//play missing ammo sound
+		}
+	}
 
 
 	public static void main(String[] arg) {
@@ -268,7 +278,13 @@ public class Runner extends JPanel implements ActionListener, MouseListener, Key
         E.setX(newX- 300);
         E.setY(newY - 300);
         
+        if (key == 32) {
+        	shoot();
+        }
+        
         repaint();
+        
+        System.out.println(key);
 		
 	}
 

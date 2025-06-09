@@ -33,7 +33,10 @@ public class EagHealth extends Sprite{
 	
 	
 	public void eagDmg(){
-		health--;
+		
+		if (health != 0) {
+			health--;
+		}
 		update();
 	}
 	
