@@ -106,7 +106,7 @@ public class Obstacles extends Sprite{
 		this.lane = lane;
 	}
 
-	private void reset() {
+	public void reset() {
 		//makes the cars stay on lane
 		this.setRandomCar();
 		this.setX(2100);

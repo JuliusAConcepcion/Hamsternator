@@ -17,7 +17,7 @@ public class Title{
 	double scaleHeight = 6.0; 		//change to scale image
 
 	public Title() {
-		forward = getImage("/pictures/"+"HamsternatorTitle.png"); //load the image for Tree
+		forward = getImage("/pictures/" + "HamsternatorTitle.png"); //load the image for Tree
 		
 
 		//alter these

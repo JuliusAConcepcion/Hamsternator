@@ -41,7 +41,7 @@ public class Runner extends JPanel implements ActionListener, MouseListener, Key
 	boolean gameOver = false;
     Timer animationTimer;
     boolean ammo = false;
-    boolean shield = false;
+    boolean shield = true;
     boolean tempShield = false;
     int tempShieldTimer = 2000;
 
@@ -59,6 +59,8 @@ public class Runner extends JPanel implements ActionListener, MouseListener, Key
 		for (Road asdf: r) {
 			asdf.paint(g);
 		}
+		
+		
 				
 		hLocked.paint(g);
 		//buttons
@@ -75,7 +77,9 @@ public class Runner extends JPanel implements ActionListener, MouseListener, Key
 	    es.paint(g);
 	    //add end sounds here, eagle-scream.wav and hamsterDying
 	       return;
-	    }	 
+	    }	
+	    
+	    
 	    
 		//running game graphics
 		b.paint(g);
@@ -94,9 +98,15 @@ public class Runner extends JPanel implements ActionListener, MouseListener, Key
 			asdf.paint(g);
 		}
 		
+		h.paint(g);
+		
+		for (Obstacles asdf: cars) {
+			asdf.paint(g);
+		}
+		
 		powerUp.paint(g);
 		E.paint(g);
-		h.paint(g);
+		
 		hh.paint(g);//overlay, should always be printed last
 		
 
@@ -112,6 +122,13 @@ public class Runner extends JPanel implements ActionListener, MouseListener, Key
 		} else if (powerUp.isColliding(h) && powerUp.getType() >= 3 && powerUp.getLane() == h.getLane()) {
 			powerUp.reset();
 			ammo = true;
+		}
+		
+		if (shield == true) {
+			Color a = Color.cyan;
+//			g.setAlpha(0.5);
+			g.setColor(a);
+			g.fillOval((int)h.getX() + 50, (int)h.getY(), 100, 100);
 		}
 		
 		
@@ -162,6 +179,13 @@ public class Runner extends JPanel implements ActionListener, MouseListener, Key
 		    Road temp = new Road(0, roadY);
 		    temp.setScaleY(7);  // set scale to 1 (or whatever you need)
 		    r.add(temp);
+		}
+		
+		for (int i = 0; i < 4; i++) {
+			Obstacles a = new Obstacles(1);
+			a.reset();
+			a.setX((int)(Math.random()*2000)+2000);
+			cars.add(a);
 		}
 		
 		
