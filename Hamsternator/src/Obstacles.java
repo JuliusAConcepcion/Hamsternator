@@ -7,6 +7,7 @@ public class Obstacles extends Sprite{
 	private String CarB = "pictures/CarB.gif";
 	private String Truck = "pictures/CandE.gif";
 	private int type;
+	private int lane;
 	
 	private double vx = -10;
 	
@@ -102,15 +103,13 @@ public class Obstacles extends Sprite{
 		//makes the cars stay on lane
 		this.setRandomCar();
 		this.setX(2100);
-		int lane = ((int)(Math.random()*4)) + 1;
+		lane = ((int)(Math.random()*4)) + 1;
 		if (lane <= 1) {
 			this.setY(700);
 		} else if(lane == 2) {
 			this.setY(800);
-			setType(2);
 		}else if(lane == 3) {
 			this.setY(900);
-			setType(3);
 		}else {
 			this.setY(1000);
 		}

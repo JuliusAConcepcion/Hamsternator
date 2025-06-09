@@ -99,6 +99,7 @@ public class Runner extends JPanel implements ActionListener, MouseListener, Key
 			PowerUp icon = new PowerUp(powerUp.getType(), 460, 970);
 			icon.paint(g);
 		}
+		
 		if (cars.isColliding(h) ) {
 //			hh.hamDmg(); //doesnt change the bar, shows bunch of errors, ethat help
 			

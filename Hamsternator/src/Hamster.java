@@ -9,6 +9,8 @@ import java.net.URL;
 
 public class Hamster extends Sprite{
 	
+	private int lane;
+	
 	public Hamster() {
 		
 		

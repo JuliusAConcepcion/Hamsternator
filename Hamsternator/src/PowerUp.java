@@ -7,13 +7,15 @@ public class PowerUp extends Sprite{
 	private String shield = "pictures/shield-pu-pixilart.png";
 	private String ammo = "pictures/ss-shell-pixilart.png";
 	private int type;
+	private int lane;
 	
 	private double vx = -10;
 	
 	public PowerUp(int a) {
 		super("");
 		
-		setType(a); 
+		type = a;
+		
 		
 		if (a <= 1) {
 			this.changePicture(health);
@@ -32,7 +34,7 @@ public class PowerUp extends Sprite{
 	public PowerUp(int a, int x, int y) {
 		super("");
 		
-		setType(a); 
+		type = a;
 		
 		if (a <= 1) {
 			this.changePicture(health);
@@ -51,7 +53,7 @@ public class PowerUp extends Sprite{
 	public void setRandomPower() {
 		int temp = (int)(Math.random()*3) + 1;
 		
-		setType(temp);
+		type = temp;
 		
 		if (temp <= 1) {
 			this.changePicture(health);
@@ -99,15 +101,15 @@ public class PowerUp extends Sprite{
 		//makes the powerUps stay on lane
 		this.setRandomPower();
 		this.setX(2100);
-		int lane = ((int)(Math.random()*4)) + 1;
+		lane = ((int)(Math.random()*4)) + 1;
+		
+		
 		if (lane <= 1) {
 			this.setY(700);
 		} else if(lane == 2) {
 			this.setY(800);
-			setType(2);
 		}else if(lane == 3) {
 			this.setY(900);
-			setType(3);
 		}else {
 			this.setY(1000);
 		}
