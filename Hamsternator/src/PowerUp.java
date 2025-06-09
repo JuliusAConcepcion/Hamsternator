@@ -59,12 +59,19 @@ public class PowerUp extends Sprite{
 			this.changePicture(health);
 		} else if(temp == 2) {
 			this.changePicture(shield);
-			setType(2);
 		} else {
 			this.changePicture(ammo);
 		}
 	}
 	
+	public int getLane() {
+		return lane;
+	}
+
+	public void setLane(int lane) {
+		this.lane = lane;
+	}
+
 	public boolean isColliding(Hamster a) {//code later
 		int px = (int) this.getX();
 	    int py = (int) this.getY();
@@ -97,7 +104,7 @@ public class PowerUp extends Sprite{
 //		System.out.println(this.getWidth()*2);
 	}
 
-	private void reset() {
+	public void reset() {
 		//makes the powerUps stay on lane
 		this.setRandomPower();
 		this.setX(2100);

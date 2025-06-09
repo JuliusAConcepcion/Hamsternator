@@ -31,6 +31,33 @@ public class Hamster extends Sprite{
 		setY(b);
 	}
 	
+	public int getLane() {
+		return lane;
+	}
+
+	public void setLane(int lane) {
+		this.lane = lane;
+	}
+
+	public void paint(Graphics g) {
+		
+		int y = (int)getY();
+		
+		if (y == 650) {
+			lane = 1;
+		} else if (y == 750) {
+			lane = 2;
+		} else if (y == 850) {
+			lane = 3;
+		} else if (y == 950) {
+			lane = 4;
+		}
+		
+		System.out.println(y);
+		
+		super.paint(g);
+	}
+	
 
 	
 	

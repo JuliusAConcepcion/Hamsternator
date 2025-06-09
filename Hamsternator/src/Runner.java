@@ -27,9 +27,10 @@ public class Runner extends JPanel implements ActionListener, MouseListener, Key
 	ArrayList<Building> buildings = new ArrayList<Building>();
 	ArrayList<Road> r = new ArrayList<Road>();
 	Eagle E = new Eagle(10,400);
+	ArrayList<Obstacles> cars = new ArrayList<Obstacles>();
 	
 	PowerUp powerUp = new PowerUp(1, 2010, 900); 
-	Obstacles cars = new Obstacles(1, 2010, 900); 
+//	Obstacles cars = new Obstacles(1, 2010, 900); 
 	Title t = new Title();
 	StartButton sb = new StartButton(700, 400);
 	EndScreen es = new EndScreen();
@@ -39,6 +40,10 @@ public class Runner extends JPanel implements ActionListener, MouseListener, Key
 	boolean gameStarted = false;
 	boolean gameOver = false;
     Timer animationTimer;
+    boolean ammo = false;
+    boolean shield = false;
+    boolean tempShield = false;
+    int tempShieldTimer = 2000;
 
 	
 	public void paint(Graphics g) {
@@ -90,20 +95,26 @@ public class Runner extends JPanel implements ActionListener, MouseListener, Key
 		}
 		
 		powerUp.paint(g);
-		cars.paint(g);
 		E.paint(g);
 		h.paint(g);
 		hh.paint(g);//overlay, should always be printed last
+		
 
-		if (powerUp.isColliding(h)) {
-			PowerUp icon = new PowerUp(powerUp.getType(), 460, 970);
-			icon.paint(g);
+		
+		if (powerUp.isColliding(h) && powerUp.getType() <= 1 && powerUp.getLane() == h.getLane()) {
+			powerUp.reset();
+			if (hh.getHamHealth() < 3) {
+				hh.hamHeal();
+			}
+		} else if (powerUp.isColliding(h) && powerUp.getType() == 2 && powerUp.getLane() == h.getLane()){
+			powerUp.reset();
+			shield = true;
+		} else if (powerUp.isColliding(h) && powerUp.getType() >= 3 && powerUp.getLane() == h.getLane()) {
+			powerUp.reset();
+			ammo = true;
 		}
 		
-		if (cars.isColliding(h) ) {
-//			hh.hamDmg(); //doesnt change the bar, shows bunch of errors, ethat help
-			
-		}
+		
 		
 		
 //		System.out.println("End of paint");
@@ -120,6 +131,7 @@ public class Runner extends JPanel implements ActionListener, MouseListener, Key
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		f.setSize(2000,1100);
 		
+		powerUp.reset();
 		
 		for (int i = 0; i < 10; i++) {
 			
@@ -195,7 +207,6 @@ public class Runner extends JPanel implements ActionListener, MouseListener, Key
 	    	hh = new HamHealth(10, 950);
 	    	E = new Eagle(10,400);
 	    	e = new EagHealth(160, -600);
-	        cars = new Obstacles(1, 2010, 900);
 	    	powerUp = new PowerUp(1, 2010, 900); 
 	        gameStarted = false;
 	        animationTimer.restart();

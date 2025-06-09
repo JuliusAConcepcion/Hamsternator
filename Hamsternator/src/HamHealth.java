@@ -37,17 +37,22 @@ public class HamHealth extends Sprite{
 		update();
 	}
 	
+	public void hamHeal(){
+		health++;
+		update();
+	}
+	
 	public void update() {
 		changePicture("/pictures/"+"HealthBar " + health + ".png");
 	}
 
 
-	public static int getHamHealth() {
+	public int getHamHealth() {
 		return health;
 	}
 
 
-	public static void setHamHealth(int health) {
+	public void setHamHealth(int health) {
 		HamHealth.health = health;
 	}
 	

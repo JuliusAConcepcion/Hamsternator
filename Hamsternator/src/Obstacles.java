@@ -61,7 +61,6 @@ public class Obstacles extends Sprite{
 			this.changePicture(CarP);
 		} else if(temp == 2) {
 			this.changePicture(CarB);
-			setType(2);
 		} else {
 			this.changePicture(Truck);
 		}
@@ -97,6 +96,14 @@ public class Obstacles extends Sprite{
 //		System.out.println("type: " +getType());
 //		System.out.println(getX() + " " + getY());
 //		System.out.println(this.getWidth()*2);
+	}
+
+	public int getLane() {
+		return lane;
+	}
+
+	public void setLane(int lane) {
+		this.lane = lane;
 	}
 
 	private void reset() {
