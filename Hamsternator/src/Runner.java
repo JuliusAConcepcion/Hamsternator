@@ -75,10 +75,13 @@ public class Runner extends JPanel implements ActionListener, MouseListener, Key
 			return;
 	    }
 		//gameover graphics
+		
 	    if(gameLose){
-	    g.setColor(Color.black);
-	    g.fill3DRect(0, 0, 2000, 2000, gameLose);
-	    es.paint(g);
+	    	g.setColor(Color.black);
+	    	g.fill3DRect(0, 0, 2000, 2000, gameLose);
+	    	es.paint(g);
+	    	ammo = false;
+	    	shield = false;
 	    //add end sounds here, eagle-scream.wav and hamsterDying
 	       return;
 	    }	
