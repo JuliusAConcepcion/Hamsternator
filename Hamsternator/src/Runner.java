@@ -30,6 +30,7 @@ public class Runner extends JPanel implements ActionListener, MouseListener, Key
 	ArrayList<Road> r = new ArrayList<Road>();
 	Eagle E = new Eagle(10,400);
 	ArrayList<Obstacles> cars = new ArrayList<Obstacles>();
+	Ammo am = new Ammo();
 	
 	PowerUp powerUp = new PowerUp(1, 2010, 900); 
 //	Obstacles cars = new Obstacles(1, 2010, 900); 
@@ -43,7 +44,7 @@ public class Runner extends JPanel implements ActionListener, MouseListener, Key
 	boolean gameLose = false;
 	boolean gameWin = false;
     Timer animationTimer;
-    boolean ammo = false;
+    boolean ammo = true;
     boolean shield = false;
     boolean tempShield = false;
     int tempShieldTimer = 2000;
@@ -103,16 +104,20 @@ public class Runner extends JPanel implements ActionListener, MouseListener, Key
 		
 		h.paint(g);
 		
+		powerUp.paint(g);
+		
 		for (Obstacles asdf: cars) {
 			asdf.paint(g);
 		}
 		
-		powerUp.paint(g);
+		
 		E.paint(g);
 		
 		hh.paint(g);//overlay, should always be printed last
 		
-
+		if (ammo == true) {
+			am.paint(g);
+		}
 		
 		if (powerUp.isColliding(h) && powerUp.getType() <= 1 && powerUp.getLane() == h.getLane()) {
 			powerUp.reset();
@@ -134,12 +139,12 @@ public class Runner extends JPanel implements ActionListener, MouseListener, Key
 		for (Obstacles a: cars) {
 			if (a.isColliding(h) && a.getLane() == h.getLane()) {
 				a.reset();
-				h.setX(500);
-				
+				//car crash sound
 				if (shield) {
 					shield = false;
 				} else if (hh.getHamHealth() > 0){
 					hh.hamDmg();
+					h.setX(500);
 				}
 			}
 		}
@@ -151,6 +156,7 @@ public class Runner extends JPanel implements ActionListener, MouseListener, Key
 			g2.setColor(Color.cyan);
 			g2.fillOval((int)h.getX() + 50, (int)h.getY(), 100, 100);
 		}
+		
 		
 		
 		
