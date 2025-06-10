@@ -1,6 +1,8 @@
+import java.awt.AlphaComposite;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Toolkit;
 import java.awt.GridLayout;
 import java.awt.Image;
@@ -19,7 +21,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 public class Runner extends JPanel implements ActionListener, MouseListener, KeyListener {
-	Hamster h = new Hamster(200, 850);
+	Hamster h = new Hamster(500, 850);
 	Hamster hLocked = new Hamster(800, 850);
 	Background b = new Background();
 	EagHealth e = new EagHealth(160, -600);
@@ -41,7 +43,7 @@ public class Runner extends JPanel implements ActionListener, MouseListener, Key
 	boolean gameOver = false;
     Timer animationTimer;
     boolean ammo = false;
-    boolean shield = true;
+    boolean shield = false;
     boolean tempShield = false;
     int tempShieldTimer = 2000;
 
@@ -124,18 +126,36 @@ public class Runner extends JPanel implements ActionListener, MouseListener, Key
 			ammo = true;
 		}
 		
+		if (hh.getHamHealth() == 0) {
+			gameOver = true;
+		}
+		
+		for (Obstacles a: cars) {
+			if (a.isColliding(h) && a.getLane() == h.getLane()) {
+				a.reset();
+				h.setX(500);
+				
+				if (shield) {
+					shield = false;
+				} else if (hh.getHamHealth() > 0){
+					hh.hamDmg();
+				}
+			}
+		}
+		
 		if (shield == true) {
-			Color a = Color.cyan;
-//			g.setAlpha(0.5);
-			g.setColor(a);
-			g.fillOval((int)h.getX() + 50, (int)h.getY(), 100, 100);
+			
+			Graphics2D g2 = (Graphics2D) g;
+			g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.5f)); // 50% transparency
+			g2.setColor(Color.cyan);
+			g2.fillOval((int)h.getX() + 50, (int)h.getY(), 100, 100);
 		}
 		
 		
 		
 		
 //		System.out.println("End of paint");
-	}
+	} // paint end
 	
 	public void shoot() {
 		if (ammo == true) {
@@ -292,7 +312,7 @@ public class Runner extends JPanel implements ActionListener, MouseListener, Key
         }
 
         // Keep inside bounds (example 0 to 2000 width, 0 to 1000 height)
-        newX = Math.max(0, Math.min(newX, 2000-h.getWidth()));
+        newX = Math.max(500, Math.min(newX, 1500-h.getWidth()));
         newY = Math.max(650, Math.min(newY, 950));
         
         //ham movement
@@ -313,11 +333,10 @@ public class Runner extends JPanel implements ActionListener, MouseListener, Key
 	}
 
 	public void keyReleased(KeyEvent arg0) { 
-		// TODO Auto-generated method stub
+		
 	}
 
 	public void keyTyped(KeyEvent arg0) {
-		// TODO Auto-generated method stub
 		
 	}
 }

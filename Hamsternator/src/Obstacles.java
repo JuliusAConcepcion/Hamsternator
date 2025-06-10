@@ -111,6 +111,7 @@ public class Obstacles extends Sprite{
 		this.setRandomCar();
 		this.setX(2100);
 		lane = ((int)(Math.random()*4)) + 1;
+		
 		if (lane <= 1) {
 			this.setY(700);
 		} else if(lane == 2) {
@@ -119,6 +120,10 @@ public class Obstacles extends Sprite{
 			this.setY(900);
 		}else {
 			this.setY(1000);
+		}
+		
+		if (this.getType() == 3) {
+			this.setY(getY() - 100);
 		}
 		
 	}
