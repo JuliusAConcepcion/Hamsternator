@@ -45,12 +45,12 @@ public class EagHealth extends Sprite{
 	}
 
 
-	public static int getHealth() {
+	public int getHealth() {
 		return health;
 	}
 
 
-	public static void setHealth(int health) {
+	public void setHealth(int health) {
 		EagHealth.health = health;
 	}
 	

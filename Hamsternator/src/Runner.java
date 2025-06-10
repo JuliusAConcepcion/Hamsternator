@@ -40,7 +40,8 @@ public class Runner extends JPanel implements ActionListener, MouseListener, Key
 	
 	
 	boolean gameStarted = false;
-	boolean gameOver = false;
+	boolean gameLose = false;
+	boolean gameWin = false;
     Timer animationTimer;
     boolean ammo = false;
     boolean shield = false;
@@ -73,9 +74,9 @@ public class Runner extends JPanel implements ActionListener, MouseListener, Key
 			return;
 	    }
 		//gameover graphics
-	    if(gameOver){
+	    if(gameLose){
 	    g.setColor(Color.black);
-	    g.fill3DRect(0, 0, 2000, 2000, gameOver);
+	    g.fill3DRect(0, 0, 2000, 2000, gameLose);
 	    es.paint(g);
 	    //add end sounds here, eagle-scream.wav and hamsterDying
 	       return;
@@ -127,7 +128,7 @@ public class Runner extends JPanel implements ActionListener, MouseListener, Key
 		}
 		
 		if (hh.getHamHealth() == 0) {
-			gameOver = true;
+			gameLose = true;
 		}
 		
 		for (Obstacles a: cars) {
@@ -254,16 +255,25 @@ public class Runner extends JPanel implements ActionListener, MouseListener, Key
 	        animationTimer.start();
 	        
 	        } 
-	 	else if (gameOver) {
-	        gameOver = false;
+	 	else if (gameLose) {
+	        gameLose = false;
 	        //resets game
-	        h = new Hamster(200, 850);
+	        h = new Hamster(500, 850);  
 	    	hh = new HamHealth(10, 950);
 	    	E = new Eagle(10,400);
 	    	e = new EagHealth(160, -600);
 	    	powerUp = new PowerUp(1, 2010, 900); 
 	        gameStarted = false;
 	        animationTimer.restart();
+	        
+	        hh.setHamHealth(3); //reseting everything back to normal
+	        hh.update();
+	        e.setHealth(9);
+	        e.update();
+	        shield = false;
+	        ammo = false;
+	        powerUp.reset();
+	        
 	    }
 	}
 
