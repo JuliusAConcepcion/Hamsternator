@@ -37,6 +37,7 @@ public class Runner extends JPanel implements ActionListener, MouseListener, Key
 	Title t = new Title();
 	StartButton sb = new StartButton(700, 400);
 	EndScreen es = new EndScreen();
+	WinScreen ws = new WinScreen();
 	HamHealth hh = new HamHealth(10, 950);
 	
 	
@@ -86,6 +87,15 @@ public class Runner extends JPanel implements ActionListener, MouseListener, Key
 	       return;
 	    }	
 	    
+	    if (gameWin) {
+	    	g.setColor(Color.black);
+	    	g.fill3DRect(0, 0, 2000, 2000, gameLose);
+	    	ws.paint(g);
+	    	ammo = false;
+	    	shield = false;
+	    	
+	    	return;
+	    }
 	    
 	    
 		//running game graphics
@@ -160,7 +170,11 @@ public class Runner extends JPanel implements ActionListener, MouseListener, Key
 			g2.fillOval((int)h.getX() + 50, (int)h.getY(), 100, 100);
 		}
 		
-		
+		if (e.getHealth() == 0) {
+			gameWin = true;
+			e.setHealth(9);
+			//play eagle dying sound
+		}
 		
 		
 		
@@ -168,13 +182,15 @@ public class Runner extends JPanel implements ActionListener, MouseListener, Key
 	} // paint end
 	
 	public void shoot() {
-		if (ammo == true) {
-			//play sound here for shotgun sound
-			ammo = false;
-			e.eagDmg();
-		} else {
-			//play missing ammo sound
-		}
+		
+//		if (ammo) {
+//			//play sound here for shotgun sound
+//			ammo = false;
+//			e.eagDmg();
+//		} else {
+//			//play missing ammo sound
+//		}
+		e.eagDmg();
 	}
 
 
@@ -264,8 +280,9 @@ public class Runner extends JPanel implements ActionListener, MouseListener, Key
 	        animationTimer.start();
 	        
 	        } 
-	 	else if (gameLose) {
+	 	else if (gameLose || gameWin) {
 	        gameLose = false;
+	        gameWin = false;
 	        //resets game
 	        h = new Hamster(500, 850);  
 	    	hh = new HamHealth(10, 950);
